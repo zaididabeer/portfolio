@@ -12,28 +12,37 @@ export function HeroSection() {
     const q = gsap.utils.selector(root)
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-      tl.from(q('.hero-eyebrow'), { opacity: 0, y: 20, duration: 0.8 })
+      tl
+        .from(q('.h-name'), {
+          opacity: 0,
+          y: 48,
+          filter: 'blur(10px)',
+          duration: 1.1,
+        })
         .from(
-          q('.hero-title span'),
-          { opacity: 0, y: 40, filter: 'blur(8px)', duration: 1, stagger: 0.06 },
-          '-=0.5',
+          q('.h-role'),
+          { opacity: 0, y: 22, filter: 'blur(5px)', duration: 0.85 },
+          '-=0.6',
         )
         .from(
-          q('.hero-sub'),
-          { opacity: 0, y: 24, filter: 'blur(6px)', duration: 0.9 },
-          '-=0.65',
-        )
-        .from(
-          q('.hero-cta .btn'),
-          { opacity: 0, y: 20, duration: 0.65, stagger: 0.08 },
+          q('.h-cta .btn'),
+          { opacity: 0, y: 16, duration: 0.6, stagger: 0.12 },
           '-=0.55',
         )
         .from(
-          q('.hero-visual'),
-          { opacity: 0, y: 32, scale: 0.98, duration: 1.1, ease: 'expo.out' },
-          '-=0.9',
+          q('.hero__visual-wrap'),
+          {
+            opacity: 0,
+            y: 44,
+            scale: 0.965,
+            filter: 'blur(14px)',
+            duration: 1.35,
+            ease: 'expo.out',
+          },
+          '-=1.1',
         )
     }, root)
+
     return () => ctx.revert()
   }, [])
 
@@ -44,26 +53,48 @@ export function HeroSection() {
   return (
     <section ref={sectionRef} id="home" className="section hero">
       <div className="container hero__grid">
+        {/* ── Left: content ── */}
         <div className="hero__content">
-          <p className="hero-eyebrow">Software Engineer · Flutter</p>
-          <h1 className="hero-title">
-            <span>Building Scalable Mobile</span>
-            <span>Experiences with Flutter</span>
-            <span className="hero-title__accent">&amp; Modern Technologies</span>
-          </h1>
-          <p className="hero-sub text-secondary">
-            Focused on building polished, scalable, and high-performance applications with
-            modern engineering principles.
+          <h1 className="h-name">Dabeer Zaidi</h1>
+          <p className="h-role">
+            Software Engineer Specializing in Flutter &amp; Product Systems
           </p>
-          <div className="hero-cta">
-            <button type="button" className="btn btn--primary" onClick={() => scrollTo('projects')}>
-              View Projects
+
+          <div className="h-cta">
+            <button
+              type="button"
+              className="btn btn--primary h-btn-primary"
+              onClick={() => scrollTo('projects')}
+            >
+              Explore Work
+              <svg
+                className="h-btn-arrow"
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden
+              >
+                <path
+                  d="M2.5 7h9M8.5 3.5 12 7l-3.5 3.5"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
-            <button type="button" className="btn btn--ghost" onClick={() => scrollTo('contact')}>
+            <button
+              type="button"
+              className="btn btn--ghost"
+              onClick={() => scrollTo('contact')}
+            >
               Contact Me
             </button>
           </div>
         </div>
+
+        {/* ── Right: visual ── */}
         <div className="hero__visual-wrap">
           <HeroVisual />
         </div>

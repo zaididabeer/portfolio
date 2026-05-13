@@ -6,11 +6,9 @@ import { BackgroundOrbs } from './components/BackgroundOrbs'
 import { Navbar } from './components/Navbar'
 import { HeroSection } from './components/sections/HeroSection'
 import { StatsStrip } from './components/sections/StatsStrip'
-import { AboutPreview } from './components/sections/AboutPreview'
+import { BentoGrid } from './components/sections/BentoGrid'
 import { TechStack } from './components/sections/TechStack'
-import { FeaturedProjects } from './components/sections/FeaturedProjects'
 import { Experience } from './components/sections/Experience'
-import { Services } from './components/sections/Services'
 import { Testimonials } from './components/sections/Testimonials'
 import { CTA } from './components/sections/CTA'
 import { Footer } from './components/sections/Footer'
@@ -28,9 +26,9 @@ function PageShell() {
     const ctx = gsap.context(() => {
       gsap.from(main, {
         opacity: 0,
-        y: 12,
-        filter: 'blur(6px)',
-        duration: 0.9,
+        y: 14,
+        filter: 'blur(8px)',
+        duration: 1,
         ease: 'power3.out',
       })
     }, main)
@@ -49,11 +47,9 @@ function PageShell() {
       <main ref={mainRef} className="page-main">
         <HeroSection />
         <StatsStrip />
-        <AboutPreview />
+        <BentoGrid />
         <TechStack />
-        <FeaturedProjects />
         <Experience />
-        <Services />
         <Testimonials />
         <CTA />
         <Footer />
