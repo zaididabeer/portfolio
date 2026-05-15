@@ -16,11 +16,24 @@ function scrollToId(id) {
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [resumeOpen, setResumeOpen] = useState(false)
   const navRef = useRef(null)
   const overlayRef = useRef(null)
   const panelRef = useRef(null)
   const linksRef = useRef([])
   const menuWasOpened = useRef(false)
+  const resumeRef = useRef(null)
+
+  useEffect(() => {
+    if (!resumeOpen) return
+    const handleClickOutside = (e) => {
+      if (resumeRef.current && !resumeRef.current.contains(e.target)) {
+        setResumeOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [resumeOpen])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -131,14 +144,75 @@ export function Navbar() {
           </nav>
 
           <div className="site-nav__actions">
-            <a
-              className="btn btn--primary btn--sm"
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Resume
-            </a>
+            <div className="resume-popup" ref={resumeRef}>
+              <button
+                type="button"
+                className="btn btn--primary btn--sm"
+                onClick={() => setResumeOpen((o) => !o)}
+                aria-expanded={resumeOpen}
+                aria-haspopup="true"
+              >
+                Resume
+                <svg
+                  className={`resume-popup__chevron${resumeOpen ? ' resume-popup__chevron--open' : ''}`}
+                  width="12"
+                  height="12"
+                  viewBox="0 0 13 13"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M2.5 4.5 6.5 8.5l4-4"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              {resumeOpen && (
+                <div className="resume-menu glass" role="menu">
+                  <a
+                    className="resume-menu__item"
+                    href="/Dabeer_Zaidi_Resume.pdf"
+                    download="Dabeer_Zaidi_Resume.pdf"
+                    role="menuitem"
+                    onClick={() => setResumeOpen(false)}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden>
+                      <path
+                        d="M7.5 1v9m0 0-3-3m3 3 3-3M2 11.5v1A1.5 1.5 0 0 0 3.5 14h8A1.5 1.5 0 0 0 13 12.5v-1"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Download Resume
+                  </a>
+                  <a
+                    className="resume-menu__item"
+                    href="/Dabeer_Zaidi_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    role="menuitem"
+                    onClick={() => setResumeOpen(false)}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden>
+                      <path
+                        d="M6 2H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9M9 1h5m0 0v5m0-5L7 9"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Preview Resume
+                  </a>
+                </div>
+              )}
+            </div>
             <button
               type="button"
               className="site-nav__burger"
@@ -180,12 +254,21 @@ export function Navbar() {
           <div className="mobile-menu__footer">
             <a
               className="btn btn--primary btn--block"
-              href="/resume.pdf"
+              href="/Dabeer_Zaidi_Resume.pdf"
+              download="Dabeer_Zaidi_Resume.pdf"
+              onClick={closeMenu}
+            >
+              Download Resume
+            </a>
+            <a
+              className="btn btn--ghost btn--block"
+              href="/Dabeer_Zaidi_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
+              style={{ marginTop: '10px' }}
             >
-              Resume
+              Preview Resume
             </a>
           </div>
         </div>
