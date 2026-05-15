@@ -6,13 +6,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 const PROJECTS = [
   {
-    title: 'FinFlow',
+    title: 'Finova',
+    badge: 'Showcase',
     description:
-      'Consumer banking experience with offline-first sync, biometric flows, and modular feature delivery across regions.',
+      'Offline-first personal finance & investment tracking app for iOS & Android — expense categorization, mock stock/crypto portfolio monitoring, spending analytics, and automatic Firebase cloud sync via a Clean Architecture + MVVM foundation.',
     image:
-      'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=80',
-    stack: ['Flutter', 'Firebase', 'REST'],
-    demo: '#',
+      'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1400&q=80',
+    stack: ['Flutter', 'Dart', 'Provider', 'Clean Architecture', 'MVVM', 'Drift (SQLite)', 'Firebase', 'fl_chart'],
+    demo: null,
     github: '#',
   },
   {
@@ -111,17 +112,27 @@ export function FeaturedProjects() {
 }
 
 function ProjectRow({ project, reversed }) {
+  const MediaWrapper = project.demo ? 'a' : 'div'
+  const mediaProps = project.demo
+    ? { href: project.demo, 'aria-label': `${project.title} preview` }
+    : { 'aria-label': `${project.title} preview` }
+
   return (
     <article
       className={`project-row glass ${reversed ? 'project-row--reverse' : ''}`}
       data-project-card
     >
-      <a className="project-row__media" href={project.demo} aria-label={`${project.title} preview`}>
+      <MediaWrapper className="project-row__media" {...mediaProps}>
         <img src={project.image} alt="" loading="lazy" width={700} height={440} />
         <span className="project-row__shine" aria-hidden />
-      </a>
+      </MediaWrapper>
       <div className="project-row__body">
-        <h3 className="project-row__title">{project.title}</h3>
+        <div className="project-row__title-row">
+          <h3 className="project-row__title">{project.title}</h3>
+          {project.badge && (
+            <span className="pill pill--sm project-row__badge">{project.badge}</span>
+          )}
+        </div>
         <p className="project-row__desc text-secondary">{project.description}</p>
         <ul className="project-row__stack">
           {project.stack.map((t) => (
@@ -131,9 +142,11 @@ function ProjectRow({ project, reversed }) {
           ))}
         </ul>
         <div className="project-row__actions">
-          <a className="btn btn--primary btn--sm" href={project.demo}>
-            Live demo
-          </a>
+          {project.demo && (
+            <a className="btn btn--primary btn--sm" href={project.demo}>
+              Live demo
+            </a>
+          )}
           <a className="btn btn--ghost btn--sm" href={project.github} target="_blank" rel="noreferrer">
             GitHub
           </a>

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { HeroVisual } from '../HeroVisual'
+import { HeroVisual } from '../components/HeroVisual'
 
 export function HeroSection() {
   const sectionRef = useRef(null)
@@ -84,13 +84,12 @@ export function HeroSection() {
                 />
               </svg>
             </button>
-            <button
-              type="button"
-              className="btn btn--ghost"
-              onClick={() => scrollTo('contact')}
+            <a
+              className="btn btn--ghost h-btn-primary"
+              href="mailto:dabeerzaidi10@gmail.com"
             >
               Contact Me
-            </button>
+            </a>
           </div>
         </div>
 

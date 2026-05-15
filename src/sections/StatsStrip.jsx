@@ -1,11 +1,12 @@
 import { useRef } from 'react'
-import { useGsapReveal } from '../../hooks/useGsapReveal'
+import { useGsapReveal } from '../hooks/useGsapReveal'
 
 const SPECIALTIES = [
-  { label: 'Flutter Specialist' },
+  { label: 'Flutter' },
   { label: 'Cross Platform Engineer' },
   { label: 'React Native' },
   { label: 'Backend APIs' },
+  { label: 'Node.js' },
   { label: 'Firebase Systems' },
   { label: 'Modern UI Engineering' },
 ]

@@ -2,9 +2,9 @@ import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 const LAYERS = [
-  { label: 'UI Layer', tech: 'Flutter 3.x', sub: 'Widgets · Animations', color: '#019dcb' },
-  { label: 'State', tech: 'Riverpod 2.0', sub: 'Async · Reactive', color: '#7dd3fc' },
-  { label: 'API Layer', tech: 'REST · GraphQL', sub: 'Interceptors · Cache', color: '#a78bfa' },
+  { label: 'UI Layer', tech: 'Flutter', sub: 'Widgets · Animations', color: '#019dcb' },
+  { label: 'State', tech: 'BLoC · Provider · GETX', sub: 'Async · Reactive', color: '#7dd3fc' },
+  { label: 'API Layer', tech: 'REST', sub: 'Interceptors · Cache', color: '#a78bfa' },
   { label: 'Backend', tech: 'Node · Firebase', sub: 'Auth · Realtime DB', color: '#34d399' },
   { label: 'CI / CD', tech: 'GitHub Actions', sub: 'Auto-deploy · Tests', color: '#fbbf24' },
 ]
@@ -153,41 +153,6 @@ export function HeroVisual() {
             <span className="hv-build__pct">87%</span>
           </div>
         </div>
-      </div>
-
-      {/* ── Float 1: Build passed ── */}
-      <div className="hv-float hv-card hv-card--build glass">
-        <span className="hv-card__indicator hv-card__indicator--green" aria-hidden />
-        <div>
-          <span className="hv-card__title">Build passed</span>
-          <span className="hv-card__sub">CI · 47 tests · 2.3s</span>
-        </div>
-      </div>
-
-      {/* ── Float 2: Frame rate mini chart ── */}
-      <div className="hv-float hv-card hv-card--perf glass">
-        <span className="hv-card__micro-label">Frame Rate</span>
-        <div className="hv-perf-bars">
-          {PERF_BARS.map((v, i) => (
-            <div
-              // eslint-disable-next-line react/no-array-index-key
-              key={i}
-              className="hv-perf__bar"
-              style={{
-                height: `${(v / 100) * 100}%`,
-                opacity: v >= 96 ? 1 : 0.5,
-              }}
-            />
-          ))}
-        </div>
-        <span className="hv-card__value">60fps</span>
-      </div>
-
-      {/* ── Float 3: P95 latency metric ── */}
-      <div className="hv-float hv-card hv-card--metric glass">
-        <span className="hv-card__micro-label">P95 Response</span>
-        <strong className="hv-metric__num">112ms</strong>
-        <span className="hv-metric__delta">↓ 18% vs baseline</span>
       </div>
     </div>
   )

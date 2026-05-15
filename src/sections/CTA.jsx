@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useGsapReveal } from '../../hooks/useGsapReveal'
+import { useGsapReveal } from '../hooks/useGsapReveal'
 
 export function CTA() {
   const ref = useRef(null)
@@ -18,7 +18,7 @@ export function CTA() {
             </p>
           </div>
           <div className="cta__actions">
-            <a className="btn btn--primary" href="mailto:hello@dabeer.dev">
+            <a className="btn btn--primary" href="mailto:dabeerzaidi10@gmail.com">
               Start a conversation
             </a>
             <a className="btn btn--ghost" href="#projects">

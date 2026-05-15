@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { useTheme } from '../hooks/useTheme'
 
 const NAV_LINKS = [
   { id: 'home', label: 'Home' },
   { id: 'projects', label: 'Projects' },
-  { id: 'experience', label: 'Experience' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
 ]
@@ -16,7 +14,6 @@ function scrollToId(id) {
 }
 
 export function Navbar() {
-  const { theme, toggleTheme, isDark } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const navRef = useRef(null)
@@ -142,16 +139,6 @@ export function Navbar() {
             >
               Resume
             </a>
-            <button
-              type="button"
-              className="theme-toggle"
-              aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-              onClick={toggleTheme}
-            >
-              <span className="theme-toggle__icon" aria-hidden>
-                {theme === 'dark' ? '◐' : '◑'}
-              </span>
-            </button>
             <button
               type="button"
               className="site-nav__burger"

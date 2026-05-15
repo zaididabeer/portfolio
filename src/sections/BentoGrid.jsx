@@ -90,25 +90,32 @@ const CARDS = [
   {
     id: 'finova',
     title: 'Finova',
-    tagline: 'Consumer banking app delivering secure payments and offline-first sync across iOS & Android.',
+    tagline: 'Offline-first personal finance & investment tracking app built with Flutter for iOS & Android.',
     category: 'Featured Project',
     Icon: IconFinova,
     slotClass: 'bento-slot--1',
     accentHue: 'accent',
-    previewTech: ['Flutter', 'Firebase', 'Riverpod'],
+    previewTech: ['Flutter', 'Provider', 'Drift (SQLite)', 'Firebase'],
     overview:
-      'A production-grade consumer banking platform serving 200k+ users. Built entirely with Flutter, Finova delivers biometric authentication, real-time balance updates, and a fully offline-capable transaction history — all inside a polished, sub-120ms interaction budget.',
+      'Finova is a modern fintech-style mobile application focused on expense tracking, investment portfolio management, and financial analytics. Built entirely with Flutter, it combines a clean UI with scalable architecture, offline-first persistence, and synchronized cloud data via Firebase and SQLite. Users can track daily expenses, categorize transactions, monitor mock stock & crypto investments, view spending analytics, and access all data offline with automatic cloud sync.',
     approach:
-      'Clean Architecture with feature-first folder structure ensures each domain (auth, transactions, accounts, cards) is fully isolated. BLoC pattern handles complex state transitions with one-directional data flow and full testability.',
+      'Built using Clean Architecture with a feature-first modular structure to ensure scalability, maintainability, and separation of concerns. The app follows an MVVM pattern powered by Provider for reactive state management and dependency-driven UI updates. The data layer is designed around an offline-first strategy — local Drift (SQLite) persistence acts as the primary source while Firebase handles cloud synchronization and backup.',
     architectureNote:
-      'Feature-first monorepo · BLoC / Cubit state · Repository abstraction · Hive for offline persistence · Dio + interceptors for resilient networking',
+      'Feature-first modular architecture · MVVM pattern · Provider state management · Repository abstraction · Drift (SQLite) offline persistence · Firebase Authentication · Cloud Firestore sync · Dependency Injection · Offline-first data flow',
     challenges: [
-      'Offline-first sync with deterministic conflict resolution across multiple devices',
-      'Biometric authentication with graceful fallbacks across iOS Face ID and Android biometrics',
-      'Sub-120ms P95 interactions with Firestore real-time streams and heavy list rendering',
-      'PCI-DSS compliance requirements with secure storage and certificate pinning',
+      'Designed a scalable offline-first architecture using Drift (SQLite) with Firebase synchronization',
+      'Implemented financial analytics — expense aggregation, category filtering, and investment profit/loss calculations',
+      'Built a modular repository-driven data layer supporting local caching and future API integrations',
+      'Simulated dynamic investment price updates for stock & crypto portfolios without live market APIs',
+      'Structured the app with reusable widgets, centralized theming, and feature isolation for long-term scalability',
     ],
-    results: ['4.8★ App Store & Play Store rating', '200k+ monthly active users', '<120ms P95 interactions', '99.4% crash-free sessions'],
+    results: [
+      'Production-style fintech architecture with scalable feature modules',
+      'Fully offline-capable financial tracking experience',
+      'Clean, maintainable codebase following industry-standard architecture principles',
+      'Real-time-ready sync structure prepared for future cloud expansion',
+      'Responsive cross-platform UI optimized for Android & iOS',
+    ],
   },
   {
     id: 'flutter-eng',

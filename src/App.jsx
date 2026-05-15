@@ -1,17 +1,15 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ThemeProvider } from './context/ThemeProvider'
 import { BackgroundOrbs } from './components/BackgroundOrbs'
 import { Navbar } from './components/Navbar'
-import { HeroSection } from './components/sections/HeroSection'
-import { StatsStrip } from './components/sections/StatsStrip'
-import { BentoGrid } from './components/sections/BentoGrid'
-import { TechStack } from './components/sections/TechStack'
-import { Experience } from './components/sections/Experience'
-import { Testimonials } from './components/sections/Testimonials'
-import { CTA } from './components/sections/CTA'
-import { Footer } from './components/sections/Footer'
+import { HeroSection } from './sections/HeroSection'
+import { StatsStrip } from './sections/StatsStrip'
+import { BentoGrid } from './sections/BentoGrid'
+import { AboutPreview } from './sections/AboutPreview'
+import { TechStack } from './sections/TechStack'
+import { CTA } from './sections/CTA'
+import { Footer } from './sections/Footer'
 import './styles/portfolio.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -48,9 +46,8 @@ function PageShell() {
         <HeroSection />
         <StatsStrip />
         <BentoGrid />
+        <AboutPreview />
         <TechStack />
-        <Experience />
-        <Testimonials />
         <CTA />
         <Footer />
       </main>
@@ -59,9 +56,5 @@ function PageShell() {
 }
 
 export default function App() {
-  return (
-    <ThemeProvider>
-      <PageShell />
-    </ThemeProvider>
-  )
+  return <PageShell />
 }

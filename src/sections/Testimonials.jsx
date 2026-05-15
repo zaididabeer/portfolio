@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useGsapReveal } from '../../hooks/useGsapReveal'
+import { useGsapReveal } from '../hooks/useGsapReveal'
 
 const QUOTES = [
   {
