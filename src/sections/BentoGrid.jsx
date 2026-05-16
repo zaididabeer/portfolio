@@ -477,6 +477,10 @@ export function BentoGrid() {
           start: 'top 78%',
           once: true,
         },
+        onComplete() {
+          // Clear inline filter so no stacking context blocks backdrop-filter in Chromium
+          gsap.set(slots, { filter: 'none', clearProps: 'filter' })
+        },
       })
     }, root)
     return () => ctx.revert()
