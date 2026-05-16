@@ -1,14 +1,13 @@
 const FOOTER_LINKS = [
   { href: '#home', label: 'Home' },
   { href: '#projects', label: 'Projects' },
-  { href: '#experience', label: 'Experience' },
   { href: '#about', label: 'About' },
   { href: '#contact', label: 'Contact' },
 ]
 
 const SOCIAL = [
-  { href: 'https://github.com', label: 'GitHub' },
-  { href: 'https://linkedin.com', label: 'LinkedIn' },
+  { href: 'https://github.com/zaididabeer', label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/dabeer-zaidi/', label: 'LinkedIn' },
   { href: 'https://twitter.com', label: 'X' },
 ]
 
